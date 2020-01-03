@@ -8,6 +8,7 @@ import { NavBarComponent } from './shered/nav-bar/nav-bar.component';
 import { TodoComponent } from './pages/todo/todo.component';
 import { HomeComponent } from './pages/home/home.component';
 import { TodoPostCardComponent } from './components/todo-post-card/todo-post-card.component';
+import { TodoCardComponent } from './components/todo-card/todo-card.component';
 
 @NgModule({
   declarations: [
@@ -15,7 +16,8 @@ import { TodoPostCardComponent } from './components/todo-post-card/todo-post-car
     NavBarComponent,
     TodoComponent,
     HomeComponent,
-    TodoPostCardComponent
+    TodoPostCardComponent,
+    TodoCardComponent
   ],
   imports: [
     BrowserModule,
