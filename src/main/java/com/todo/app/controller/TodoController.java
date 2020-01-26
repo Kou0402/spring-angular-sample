@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.todo.app.entity.Todo;
+import com.todo.app.entity.TodoEntity;
 import com.todo.app.service.TodoService;
 
 @CrossOrigin
@@ -22,8 +22,8 @@ public class TodoController {
 	TodoService todoService;
 
 	@GetMapping
-	List<Todo> getTodoList() {
-		List<Todo> todoEntityList = todoService.findAll();
+	List<TodoEntity> getTodoList() {
+		List<TodoEntity> todoEntityList = todoService.findAll();
         return todoEntityList;
     }
 

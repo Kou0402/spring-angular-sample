@@ -6,18 +6,15 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.todo.app.entity.Todo;
-import com.todo.app.mapper.TodoMapper;
+import com.todo.app.entity.TodoEntity;
+import com.todo.app.repository.TodoRepository;
 
 @Service
 public class TodoService {
-
 	@Autowired
-	private TodoMapper todoMapper;
-
+	private TodoRepository todoRepository;
     @Transactional
-    public List<Todo> findAll() {
-        return todoMapper.findAll();
+    public List<TodoEntity> findAll() {
+        return todoRepository.findAll();
     }
-
 }
