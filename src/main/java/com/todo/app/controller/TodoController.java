@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -26,6 +27,11 @@ public class TodoController {
 		List<TodoEntity> todoEntityList = todoService.findAll();
         return todoEntityList;
     }
+	@GetMapping("{id}")
+	TodoEntity getTodo(@PathVariable("id") Integer id) {
+		TodoEntity todoEntity = todoService.findOne(id);
+		return todoEntity;
+	}
 
 //    @PostMapping
 //    public String postTodo(@RequestBody String item) {
