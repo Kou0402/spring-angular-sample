@@ -1,8 +1,9 @@
-<article class="todo-card">
-  <input type="text" placeholder="タイトル" [(ngModel)]="model.title">
-  <input type="text" placeholder="詳細" class="-wide" [(ngModel)]="model.detail">
+<article *ngFor="let todo of todoList" class="todo-card">
+  <input type="text" placeholder="タイトル" [(ngModel)]="todo.title">
+  <input type="text" placeholder="詳細" class="-wide" [(ngModel)]="todo.detail">
   <div>
-    <input type="date" [(ngModel)]="model.limit">
+    <input type="date" [(ngModel)]="todo.createdAt">
     <button type="button" class="button">完了</button>
   </div>
 </article>
+

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
 import { Todo } from '../../model/todo';
+import { TodoService } from '../../service/todo/todo.service';
 
 @Component({
   selector: 'app-todo-card',
@@ -9,11 +10,20 @@ import { Todo } from '../../model/todo';
 })
 export class TodoCardComponent implements OnInit {
 
-  model = new Todo(null, null, null)
+  // todo = new Todo(null, null, null, null)
+  todoList: Todo[]
 
-  constructor() { }
+  constructor( private todoService: TodoService ) { }
 
   ngOnInit() {
+    this.getTodo()
+  }
+
+  getTodo() {
+    this.todoService.getTodoList().subscribe((data: Todo[]) => {
+      this.todoList = data
+      // console.log(data)
+    })
   }
 
 }

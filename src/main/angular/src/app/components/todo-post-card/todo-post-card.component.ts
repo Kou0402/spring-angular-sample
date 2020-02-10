@@ -9,7 +9,7 @@ import { Todo } from "../../model/todo";
   styleUrls: ["./todo-post-card.component.scss"]
 })
 export class TodoPostCardComponent implements OnInit {
-  model = new Todo(null, null, null);
+  model = new Todo(null, null, null, null);
 
   constructor(private http: HttpClient) {}
 
