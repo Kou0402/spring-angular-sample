@@ -1,5 +1,6 @@
 package com.todo.app.service;
 
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.List;
@@ -16,6 +17,8 @@ import com.todo.app.repository.TodoRepository;
 @Service
 public class TodoService {
 
+	SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd");
+
 	@Autowired
 	private TodoRepository todoRepository;
 
@@ -26,7 +29,6 @@ public class TodoService {
 
     	// 日付フォーマットを施し、エンティティから Dto に詰め替える。
     	List<TodoDto> todoDtoList = new ArrayList<TodoDto>();
-    	SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd");
     	for (TodoEntity todoEntity: todoEntityList ) {
     		TodoDto todoDto = new TodoDto();
     		BeanUtils.copyProperties(todoEntity, todoDto);
@@ -38,8 +40,18 @@ public class TodoService {
     }
 
     @Transactional
-    public TodoEntity findOne(int id) {
-    	return todoRepository.findOne(id);
-    }
+    public void save(TodoDto todoDto) {
 
+    	TodoEntity todoEntity = new TodoEntity();
+		BeanUtils.copyProperties(todoDto, todoEntity);
+    	// 日付フォーマットを施し Dto からエンティティに詰め替える。
+		try {
+			todoEntity.setCreatedAt(simpleDateFormat.parse(todoDto.getCreatedAt()));
+		} catch (ParseException e) {
+			e.printStackTrace();
+		}
+
+		todoRepository.save(todoEntity);
+
+    }
 }

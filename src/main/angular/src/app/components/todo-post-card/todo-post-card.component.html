@@ -1,8 +1,8 @@
 <article class="todo-post-card">
-  <input type="text" placeholder="タイトル" [(ngModel)]="model.title">
-  <input type="text" placeholder="詳細" class="-wide" [(ngModel)]="model.detail">
+  <input type="text" placeholder="タイトル" [(ngModel)]="todo.title">
+  <input type="text" placeholder="詳細" class="-wide" [(ngModel)]="todo.detail">
   <div>
-    <input type="date" [(ngModel)]="model.limit">
-    <button type="button" class="button" (click)="onClick()">追加</button>
+    <input type="date" [(ngModel)]="todo.createdAt">
+    <button type="button" class="button" (click)="postTodo()">追加</button>
   </div>
 </article>
