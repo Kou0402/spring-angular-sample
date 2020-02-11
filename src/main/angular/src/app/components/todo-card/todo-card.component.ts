@@ -10,19 +10,17 @@ import { TodoService } from '../../service/todo/todo.service';
 })
 export class TodoCardComponent implements OnInit {
 
-  // todo = new Todo(null, null, null, null)
   todoList: Todo[]
 
   constructor( private todoService: TodoService ) { }
 
   ngOnInit() {
-    this.getTodo()
+    this.setTodoList()
   }
 
-  getTodo() {
+  setTodoList() {
     this.todoService.getTodoList().subscribe((data: Todo[]) => {
       this.todoList = data
-      // console.log(data)
     })
   }
 

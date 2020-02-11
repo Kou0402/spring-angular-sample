@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.todo.app.dto.TodoDto;
 import com.todo.app.entity.TodoEntity;
 import com.todo.app.service.TodoService;
 
@@ -23,8 +24,8 @@ public class TodoController {
 	TodoService todoService;
 
 	@GetMapping
-	List<TodoEntity> getTodoList() {
-		List<TodoEntity> todoEntityList = todoService.findAll();
+	List<TodoDto> getTodoList() {
+		List<TodoDto> todoEntityList = todoService.findAll();
         return todoEntityList;
     }
 	@GetMapping("{id}")
